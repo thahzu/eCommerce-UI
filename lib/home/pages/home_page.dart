@@ -1,8 +1,8 @@
-import 'package:ecommerce_ui/home/widgets/category_view.dart';
 import 'package:flutter/material.dart';
+import '../../merchandise/category/widgets/category_view.dart';
+import '../../merchandise/product/widgets/product_view.dart';
 import '../components/banner_title.dart';
 import '../widgets/bottom_menu.dart';
-import '../widgets/product_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,7 +22,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -54,11 +53,17 @@ class _HomePageState extends State<HomePage> {
               color: Colors.red.shade100,
               shape: BoxShape.circle,
             ),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.person,
-                color: Colors.grey,
+
+            // image profile
+            child: GestureDetector(
+              onTap: () {},
+              child: ClipRRect(
+                child: Image.asset(
+                  "images/profile.png",
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
@@ -153,12 +158,12 @@ class _HomePageState extends State<HomePage> {
               timer: "22h 55m 20s remaining",
               buttonText: "View all",
               icon: Icons.lock_clock,
-              onViewAll: () {
-                // Action when "View All" is pressed
-              },
+              onViewAll: () {},
             ),
             const SizedBox(height: 15),
-           const ProductView(),
+
+            // product
+            const ProductView(),
 
             // Trending product
             const SizedBox(height: 16),
@@ -168,9 +173,7 @@ class _HomePageState extends State<HomePage> {
               timer: "Last day 29/02/22",
               buttonText: "View all",
               icon: Icons.calendar_month,
-              onViewAll: () {
-                // Action when "View All" is pressed
-              },
+              onViewAll: () {},
             ),
             const SizedBox(height: 15),
             const ProductView(),

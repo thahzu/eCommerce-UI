@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../category/category_item.dart';
+import 'package:ecommerce_ui/merchandise/category/categories/category_item.dart';
 
 class CategoryView extends StatelessWidget {
   const CategoryView({super.key});

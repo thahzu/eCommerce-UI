@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../products/product_item.dart';
-import '../products/product_info.dart';
+import 'package:ecommerce_ui/merchandise/product/products/product_item.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key});
@@ -14,6 +13,7 @@ class ProductView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: products.length,
         itemBuilder: (context, index) {
+
           final product = products[index];
           return Container(
             width: 180,
@@ -82,6 +82,7 @@ class ProductView extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Row(
                     children: [
+                      //price
                       Text(
                         product.price,
                         style: const TextStyle(
@@ -90,6 +91,8 @@ class ProductView extends StatelessWidget {
                           color: Colors.black,
                         ),
                       ),
+
+                      // old price
                       const SizedBox(width: 8),
                       Text(
                         product.oldPrice,
@@ -100,6 +103,8 @@ class ProductView extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 8),
+
+                      // discount
                       Text(
                         product.discount,
                         style: const TextStyle(

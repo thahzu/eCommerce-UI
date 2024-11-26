@@ -1,4 +1,4 @@
-import 'category_info.dart';
+import 'package:ecommerce_ui/merchandise/category/categories/category_info.dart';
 
 final categories = [
   CategoryInfo(

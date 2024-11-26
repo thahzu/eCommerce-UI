@@ -1,3 +1,4 @@
+import 'package:ecommerce_ui/auth/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 import '../components/my_button.dart';
@@ -154,14 +155,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Sign Up Action
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginPage(),
+                            ));
                       },
                       child: const Text(
                         "Login",
                         style: TextStyle(
                           color: Colors.pink,
                           fontSize: 16,
-                          decoration:TextDecoration.underline,
+                          decoration: TextDecoration.underline,
                           decorationColor: Colors.pink,
                         ),
                       ),
