@@ -1,5 +1,8 @@
-import 'package:ecommerce_ui/home/components/my_categories.dart';
+import 'package:ecommerce_ui/home/widgets/category_view.dart';
 import 'package:flutter/material.dart';
+import '../components/banner_title.dart';
+import '../widgets/bottom_menu.dart';
+import '../widgets/product_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,8 +12,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
+
+  void handleItemSelected(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -30,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         title: Image.asset(
-          'images/logo_cty.png', // Thay bằng đường dẫn logo của bạn
+          'images/logo_cty.png',
           width: 120,
           height: 60,
         ),
@@ -55,7 +67,7 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: ListView(
-          physics: const BouncingScrollPhysics(), // Cuộn mềm mại
+          physics: const BouncingScrollPhysics(),
           children: [
             // Search Bar
             Container(
@@ -97,30 +109,23 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Row(
                   children: [
-                    // Sort Button
                     ElevatedButton.icon(
-                      onPressed: () {
-                        // Sort action
-                      },
+                      onPressed: () {},
                       icon: const Icon(Icons.sort, size: 16),
                       label: const Text("Sort"),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white, // Nền trắng
-                        foregroundColor: Colors.black, // Text và icon màu đen
-                        elevation: 0, // Loại bỏ bóng
-                        side: BorderSide(color: Colors.grey.shade300), // Viền
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        elevation: 0,
+                        side: BorderSide(color: Colors.grey.shade300),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                     ),
                     const SizedBox(width: 10),
-
-                    // Filter Button
                     ElevatedButton.icon(
-                      onPressed: () {
-                        // Filter action
-                      },
+                      onPressed: () {},
                       icon: const Icon(Icons.filter_alt, size: 16),
                       label: const Text("Filter"),
                       style: ElevatedButton.styleFrom(
@@ -137,18 +142,44 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-              MyCategories(
-                categories: [
-                  {"image": "images/goku_logo.jpg", "title": "Goku"},
-                  {"image": "images/fb_logo.png", "title": "Goku"},
-                  {"image": "images/x_logo.jpg", "title": "Goku"},
-                  {"image": "images/applelogo.png", "title": "Goku"},
-                  {"image": "images/gglogo.png", "title": "Goku"},
 
-                ],
-              ),
+            // Categories
+            CategoryView(),
+
+            // Deal of the Day Section
+            BannerTitle(
+              color: Colors.blue,
+              title: "Deal of the Day",
+              timer: "22h 55m 20s remaining",
+              buttonText: "View all",
+              icon: Icons.lock_clock,
+              onViewAll: () {
+                // Action when "View All" is pressed
+              },
+            ),
+            const SizedBox(height: 15),
+           const ProductView(),
+
+            // Trending product
+            const SizedBox(height: 16),
+            BannerTitle(
+              color: Colors.pink,
+              title: "Trending product",
+              timer: "Last day 29/02/22",
+              buttonText: "View all",
+              icon: Icons.calendar_month,
+              onViewAll: () {
+                // Action when "View All" is pressed
+              },
+            ),
+            const SizedBox(height: 15),
+            const ProductView(),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomMenu(
+        selectedIndex: selectedIndex,
+        onItemSelected: handleItemSelected,
       ),
     );
   }

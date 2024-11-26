@@ -1,4 +1,5 @@
 import 'package:ecommerce_ui/home/pages/home_page.dart';
+import 'package:ecommerce_ui/onBoarding/pages/started_view.dart';
 import 'package:flutter/material.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
@@ -85,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomePage(),
+                        builder: (context) => StartedView(),
                       ),
                     );
                   },

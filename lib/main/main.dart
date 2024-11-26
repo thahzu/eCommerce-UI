@@ -1,4 +1,6 @@
 import 'package:ecommerce_ui/auth/pages/login_page.dart';
+import 'package:ecommerce_ui/onBoarding/pages/onboarding_view.dart';
+import 'package:ecommerce_ui/onBoarding/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,9 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: SplashScreen(),
     );
   }
 }
